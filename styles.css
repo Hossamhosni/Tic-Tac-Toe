@@ -1,0 +1,64 @@
+body {
+	margin:0px;
+	padding :0px;
+	text-align: center;
+	background-color: #eeeeee;
+	font-family: 'Slabo 27px', serif;
+}
+h1 {
+	font-size :230%;
+	margin-bottom : 70px;
+}
+table {
+	background: linear-gradient(180deg, black, #171f26 50%, black);
+	text-align: center;
+	margin: 0 auto;
+	border-top-right-radius: 5%;
+	border-spacing :0px;
+	display:none;
+}
+.message {
+	background-color:black;
+	width: 300px;
+	opacity: 0.5;
+	color:white;
+	margin:20px auto;
+	font-size: 150%;
+}
+.cell {
+	height:127px;
+	border:1px solid #840e0e;
+	border-collapse: collapse;
+	width:130px;
+	color:white;
+	font-size: 400%;
+	font-family: 'Kaushan Script', cursive;
+	font-weight: bold;
+}
+.container {
+	background-color: black;
+	width:405px;
+	text-align: center;
+	margin :0 auto;
+	box-shadow: 2px 2px 2px 2px #000;
+}
+.twoPlayers {
+	background-color: #00C8C8;
+	display:inline;
+	padding:5px;
+	border:none;
+	cursor:pointer;
+}
+.onePlayer {
+	background-color:#c94e4e;
+	display:inline;
+	padding:5px;
+	border:none;
+	cursor:pointer;
+}
+.info {
+	color:white;
+	padding:1px;
+	margin-bottom:2px;
+	background-color:#000;
+}
