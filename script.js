@@ -216,7 +216,9 @@
 	$('.cell').click(function (e) {
 
 		var squareNumber = $(this).attr('id');
+		var madeMove = false;
 		if (takenSquares.indexOf(squareNumber) === -1 && !gameOver) {
+			madeMove = true;
 			var inside = $('#span' + $(this).attr('id'));
 			inside.text(playerMove);
 
@@ -232,12 +234,11 @@
 			}
 		}
 
-		if (gameType === "Two Players") {
+		if (gameType === "Two Players" && madeMove) {
 			changePlayerMove();
-		} else if (gameType === "One Player" && !gameOver){
+		} else if (gameType === "One Player" && !gameOver && madeMove){
 			computerPlay();
 			if (checkWinning(computerMove)) {
-				console.log("hello");
 				showWinningMessage(computerMove);
 				gameOver = true;
 			} else if (takenSquares.length === 9) {
