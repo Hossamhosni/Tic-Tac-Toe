@@ -1,50 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+		<link rel="stylesheet" href="styles.css">
 		<title>Tic Tac Toe</title>
-		<link href = "styles.css" type="text/css" rel="stylesheet" />
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-		<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 	</head>
 	<body>
-		<h1>FCC Tic Tac Toe</h1>
-
-		<div class ="container">
-			<div class="info">
-				<h2>How do you want to play?</h2>
-				<button class="onePlayer">One Player</button>
-				<button class="twoPlayers">Two Players</button>
+		<h1>Tic Tac Toe</h1>
+		<div class="board">
+			<div class="row">
+				<div class="cell" id="1"><span></span></div>
+				<div class="cell" id="2"><span></span></div>
+				<div class="cell" id="3"><span></span></div>
 			</div>
-			<div class="board">
-				<table>
-						<tr>
-							<td class="cell"></td>
-							<td class="cell"></td>
-							<td class="cell"></td>
-						</tr>
-						<tr>
-							<td class="cell"></td>
-							<td class="cell"></td>
-							<td class="cell"></td>
-						</tr>
-						<tr>
-							<td class="cell"></td>
-							<td class="cell"></td>
-							<td class="cell"></td>
-						</tr>
-				</table>
+			<div class="row">
+				<div class="cell" id="4"><span></span></div>
+				<div class="cell" id="5"><span></span></div>
+				<div class="cell" id="6"><span></span></div>
 			</div>
-
+			<div class="row">
+				<div class="cell" id="7"><span></span></div>
+				<div class="cell" id="8"><span></span></div>
+				<div class="cell" id="9"><span></span></div>
+			</div>
 		</div>
-		<div class="message">
+		<script type="text/javascript" src="script.js">
 
-		</div>
-		<script
-		  src="https://code.jquery.com/jquery-3.1.1.js"
-		  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-		  crossorigin="anonymous">
 		</script>
-		<script type="text/javascript" src = "script.js"></script>
 	</body>
 </html>
