@@ -85,13 +85,46 @@
 
 
 	var computerPlay = function () {
-		var randomChoice = Math.floor(Math.random() * (10-1) + 1);
-		while (takenSquares.indexOf(String(randomChoice)) !== -1) {
-			randomChoice = Math.floor(Math.random() * (10-1) + 1);
+
+		var computerSquares = computerMove === "X" ? xSquares : oSquares;
+		var playerSquares = playerMove === "X" ? xSquares: oSquares;
+
+		var choice = -1;
+
+		// check for possible winning move
+		for (var i = 0; i < winningFormations.length; i++) {
+			var currentFormation = winningFormations[i];
+			if (computerSquares.includes(String(currentFormation[0])) && computerSquares.includes(String(currentFormation[1])))
+			{
+				if (takenSquares.indexOf(String(currentFormation[2])) === -1) {
+					choice = currentFormation[2];
+				}
+			}
+			else if (computerSquares.includes(String(currentFormation[1])) && computerSquares.includes(String(currentFormation[2])))
+			{
+				if (takenSquares.indexOf(String(currentFormation[0])) === -1) {
+					choice = currentFormation[0];
+				}
+
+			}
+			if (computerSquares.includes(String(currentFormation[0])) && computerSquares.includes(String(currentFormation[2])))
+			{
+				if (takenSquares.indexOf(String(currentFormation[1])) === -1) {
+					choice = currentFormation[1];
+				}
+			}
 		}
-		$('#span' + randomChoice).text(computerMove);
-		takenSquares.push(String(randomChoice));
-		computerMove === "X" ? xSquares.push(String(randomChoice)) : oSquares.push(String(randomChoice));
+
+		// if no choice is available select a random square
+		if (choice === -1) {
+			choice = Math.floor(Math.random() * (10-1) + 1);
+			while (takenSquares.indexOf(String(choice)) !== -1) {
+				choice = Math.floor(Math.random() * (10-1) + 1);
+			}
+		}
+		$('#span' + choice).text(computerMove);
+		takenSquares.push(String(choice));
+		computerMove === "X" ? xSquares.push(String(choice)) : oSquares.push(String(choice));
 	}
 
 
