@@ -6,11 +6,15 @@
 	var xSquares = [];
 	var oSquares = [];
 	var playerMove = "X";
+	var computerMove = "O";
 	var gameOver = false;
+	var gameType = 'One Player';
 
 	// dom elements
 	var p = $("#wins");
 	var button = $('#playAgain');
+	var board = $('.board');
+	var selectionPanel = $('#selection');
 
 
 	var changePlayerMove = function () {
@@ -19,10 +23,15 @@
 	}
 
 	var showWinningMessage = function (move) {
-		p.text(move + " wins");
-		p.css('display', 'block');
-
-		button.css('display', 'block');
+		if (move === 'Draw') {
+			p.text("Draw");
+			p.css('display', 'block');
+			button.css('display', 'block');
+		} else {
+			p.text(move + " wins");
+			p.css('display', 'block');
+			button.css('display', 'block');
+		}
 	}
 
 	var checkWinning = function (current) {
@@ -72,6 +81,48 @@
 		button.css('display', 'none');
 	}
 
+
+
+
+	var computerPlay = function () {
+		var randomChoice = Math.floor(Math.random() * (10-1) + 1);
+		while (takenSquares.indexOf(String(randomChoice)) !== -1) {
+			randomChoice = Math.floor(Math.random() * (10-1) + 1);
+		}
+		$('#span' + randomChoice).text(computerMove);
+		takenSquares.push(String(randomChoice));
+		computerMove === "X" ? xSquares.push(String(randomChoice)) : oSquares.push(String(randomChoice));
+	}
+
+
+
+
+	// one player or two players choice
+	$('.players').click(function () {
+		$('.players').css('border', 'none');
+		$(this).css('border', '1px solid black');
+		gameType = $(this).val();
+	});
+
+	// X-O choice
+	$('.symbol').click(function () {
+		$('.symbol').css('border', 'none');
+		$(this).css('border', '1px solid black');
+		playerMove = $(this).val();
+		computerMove = playerMove === "X" ? "O" : "X";
+	});
+
+	// start the game
+	$('#start').click(function () {
+		startGame();
+		selectionPanel.css('display', 'none');
+		board.css('display', 'block');
+		if (gameType === "One Player" && playerMove === "O") {
+			computerPlay();
+		}
+	});
+
+
 	// add animations when the user hovers over a cell
 	$('.cell').hover(function (e) {
 		var squareNumber = $(this).attr('id');
@@ -92,6 +143,7 @@
 	});
 
 	$('.cell').click(function (e) {
+
 		var squareNumber = $(this).attr('id');
 		if (takenSquares.indexOf(squareNumber) === -1 && !gameOver) {
 			var inside = $('#span' + $(this).attr('id'));
@@ -99,19 +151,33 @@
 
 			if (playerMove === "X") xSquares.push(squareNumber);
 			else oSquares.push(squareNumber);
-
+			takenSquares.push(squareNumber);
 			if (checkWinning(playerMove)) {
-
 				showWinningMessage(playerMove);
 				gameOver = true;
+			} else if (takenSquares.length === 9) {
+				showWinningMessage("Draw");
+				gameOver = true;
 			}
-			changePlayerMove();
-			takenSquares.push(squareNumber);
 		}
+
+		if (gameType === "Two Players") {
+			changePlayerMove();
+		} else if (gameType === "One Player" && !gameOver){
+			computerPlay();
+			if (checkWinning(computerMove)) {
+				console.log("hello");
+				showWinningMessage(computerMove);
+				gameOver = true;
+			} else if (takenSquares.length === 9) {
+				showWinningMessage("Draw");
+				gameOver = true;
+			}
+		}
+
 	});
 
 	$('#playAgain').click(function (e) {
-		console.log('hello');
 		startGame();
 	});
 

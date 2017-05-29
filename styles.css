@@ -10,6 +10,7 @@ body {
 	margin: 10px auto;
 	max-width: 400px;
 	min-width: 300px;
+	display: none;
 }
 .row {
 	width: 100%;
@@ -57,4 +58,23 @@ span {
 
 #wins {
 	display: none;
+}
+
+#selection {
+	background-color: #ADD8E6;
+	padding: 10px;
+	width: 45%;
+	margin: 10px auto;
+	max-width: 400px;
+	min-width: 300px;
+	border-radius: 10px;
+}
+
+.choice {
+	background-color:#DCDCDC;
+	cursor: pointer;
+	border-radius: 10px;
+	border:none;
+	font-family: 'Merriweather', serif;
+	outline: none;
 }
