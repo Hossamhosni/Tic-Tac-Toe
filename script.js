@@ -115,6 +115,44 @@
 			}
 		}
 
+		if (choice !== -1) {
+			$('#span' + choice).text(computerMove);
+			takenSquares.push(String(choice));
+			computerMove === "X" ? xSquares.push(String(choice)) : oSquares.push(String(choice));
+			return;
+		}
+		// try to block the opponent from winning
+
+		for (var i = 0; i < winningFormations.length; i++) {
+			var currentFormation = winningFormations[i];
+			if (playerSquares.includes(String(currentFormation[0])) && playerSquares.includes(String(currentFormation[1])))
+			{
+				if (takenSquares.indexOf(String(currentFormation[2])) === -1) {
+					choice = currentFormation[2];
+				}
+			}
+			else if (playerSquares.includes(String(currentFormation[1])) && playerSquares.includes(String(currentFormation[2])))
+			{
+				if (takenSquares.indexOf(String(currentFormation[0])) === -1) {
+					choice = currentFormation[0];
+				}
+
+			}
+			if (playerSquares.includes(String(currentFormation[0])) && playerSquares.includes(String(currentFormation[2])))
+			{
+				if (takenSquares.indexOf(String(currentFormation[1])) === -1) {
+					choice = currentFormation[1];
+				}
+			}
+		}
+
+		if (choice !== -1) {
+			$('#span' + choice).text(computerMove);
+			takenSquares.push(String(choice));
+			computerMove === "X" ? xSquares.push(String(choice)) : oSquares.push(String(choice));
+			return;
+		}
+
 		// if no choice is available select a random square
 		if (choice === -1) {
 			choice = Math.floor(Math.random() * (10-1) + 1);
