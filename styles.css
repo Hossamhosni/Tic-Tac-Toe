@@ -6,8 +6,10 @@ body {
 }
 
 .board {
-	width: 29%;
+	width: 45%;
 	margin: 10px auto;
+	max-width: 400px;
+	min-width: 300px;
 }
 .row {
 	width: 100%;
@@ -23,6 +25,7 @@ body {
 	height: auto;
 	margin: 5px;
 	border-radius: 20%;
+	min-width: 33%;
 }
 
 
@@ -34,6 +37,9 @@ body {
 
 span {
 	position: relative;
-	top: 30%;
-	font-size: 200%;
+	top: 20%;
+	font-size: 300%;
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+	cursor:default;
 }
